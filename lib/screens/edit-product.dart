@@ -52,22 +52,15 @@ class _EditProductState extends State<EditProduct> {
  void _saveForm(context) {
     _form.currentState.save();
     print(':::_editedProduct::');
-    // String jsonProduct = jsonEncode(_editedProduct);
-    // print(jsonProduct);
-    print(_editedProduct.toJson());
 
-    Provider.of<Products>(context, listen: false).addProductToRemote(_editedProduct.toJson()).then((response) {
-      print(response);
-      print(json.decode(response.body));
+    Provider.of<Products>(context, listen: false).addProductToRemote(_editedProduct).then((response) {
+        print(json.decode(response.body));
+        final Product _newProduct = Product(id: json.decode(response.body)['name'], title: _editedProduct.title, 
+        description: _editedProduct.description, price: _editedProduct.price, imageUrl: _editedProduct.imageUrl);
+
+        Provider.of<Products>(context, listen: false).addProductToStore(_newProduct);
+         Navigator.of(context).pushNamed(ProductList.routeName); 
     });
-
-    // Provider.of<Products>(context, listen: false).addProductToRemote(_editedProduct).then((response) {
-    //     print(json.decode(response.body));
-    //     final _newProduct = Product(id: json.decode(response.body)['name'], title: _editedProduct.title, 
-    //     description: _editedProduct.description, price: _editedProduct.price, imageUrl: _editedProduct.imageUrl);
-    //     Provider.of<Products>(context, listen: false).addProductToStore(_newProduct);
-    //      Navigator.of(context).pushNamed(ProductList.routeName); 
-    // });
   }
 
   @override

@@ -20,11 +20,11 @@ class Products with ChangeNotifier {
     return [..._items].where((element) => element.isFavorite == true).toList();
   }
 
-  Future addProductToRemote(Map<dynamic, dynamic> productJson ) {
+  Future addProductToRemote(Product product) {
     const url = 'https://flutter-shop19.firebaseio.com/products.json';
 
-    // Map<String, dynamic> productMap = product.toJson();
-    String rawProductJson = jsonEncode(productJson);
+    Map<String, dynamic> productMap = product.toJson();
+    String rawProductJson = jsonEncode(productMap);
     
     print(rawProductJson);
 

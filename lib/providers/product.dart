@@ -18,7 +18,7 @@ class Product with ChangeNotifier {
     this.isFavorite = false
   });
 
-   Map toJson() => {
+   Map<String, dynamic> toJson() => {
         'id': id,
         'title': title,
         'description': description,
