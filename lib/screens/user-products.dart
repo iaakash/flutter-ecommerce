@@ -26,8 +26,7 @@ class UserProducts extends StatelessWidget {
         itemCount: productsInstance.items.length,
         itemBuilder: (_, i) => Column(
           children: <Widget>[
-            // Text(productsInstance.items[i].title),
-            // Image.network(productsInstance.items[i].imageUrl),
+
             UserProductItem(
               id: productsInstance.items[i].id,
               title:  productsInstance.items[i].title,

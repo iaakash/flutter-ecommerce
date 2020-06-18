@@ -40,8 +40,9 @@ class MyApp extends StatelessWidget {
             accentColor: Colors.deepOrangeAccent,
             fontFamily: 'Lato'),
         routes: {
+          '/': (ctx) => ProductList(),
           // '/': (ctx) => JsonParsing(),
-          '/': (ctx) => EditProduct(),
+          // '/': (ctx) => EditProduct(),
           // EditProduct.routeName: (ctx) => EditProduct(),
           ProductList.routeName: (ctx) => ProductList(),
           ProductDetail.routeName: (ctx) => ProductDetail(),
